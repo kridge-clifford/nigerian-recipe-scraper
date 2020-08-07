@@ -1,4 +1,4 @@
-class Selenium:
+class NRBeautifulSoup:
     @staticmethod
     def get_src(element):
         return element["src"] if element else ""

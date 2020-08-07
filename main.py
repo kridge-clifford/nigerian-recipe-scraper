@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 import csv
 import time
-from selenium import Selenium
+from nrbeautifulsoup import NRBeautifulSoup
 
 
 config = {
@@ -23,7 +23,7 @@ quantity_list = ["teaspoon", "tablespoon", "cooking spoons", "stock", "cigar cup
                  "cups", "small stock", "small party cups", "big stock", "small party cups", "small party cup"]
 
 
-class Handler(Selenium):
+class Handler(NRBeautifulSoup):
     def __init__(self):
         self.start_time = time.time()
         self.skipped_urls = []
@@ -60,7 +60,7 @@ class Handler(Selenium):
 
         links = soup.select(recipe_links_selector)
         to_csv = []
-        for index, link in enumerate(links[30:]):
+        for index, link in enumerate(links):
             recipe_details = self.extract_details(link)
             if not recipe_details:
                 continue
